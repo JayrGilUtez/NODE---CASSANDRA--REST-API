@@ -16,6 +16,7 @@ export const connectToCassandra = () => {
         }
     });
 };
+connectToCassandra();
 
 export const executeQuery = async (query) => {
     try {

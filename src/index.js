@@ -13,4 +13,5 @@ app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`);
 });
 
-executeQuery('SELECT * FROM historias_interactivas.stories;');
+executeQuery('SELECT * FROM historias_interactivas.stories;')
+
