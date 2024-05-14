@@ -1,17 +1,8 @@
-import express from 'express';
-import { executeQuery } from './db.js';
-const app = express();
-const port = 3000;
+import app from './app.js';
+import cors from 'cors'
+import {SERVER_PORT} from './config.js'
 
-
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-app.listen(port, () => {
-    console.log(`Server is listening at http://localhost:${port}`);
-});
-
-executeQuery('SELECT * FROM historias_interactivas.stories;')
+app.use(cors());
+app.listen(SERVER_PORT);
+console.log('Server running on ', `http://localhost:${SERVER_PORT}/`);
 

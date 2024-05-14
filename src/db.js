@@ -1,7 +1,7 @@
 import cassandra from 'cassandra-driver';
 import { cassandraConfig } from './config.js';
 
-const client = new cassandra.Client({
+export const client = new cassandra.Client({
     contactPoints: [cassandraConfig.CONTACT_POINTS],
     localDataCenter: cassandraConfig.LOCAL_DATA_CENTER,
     keyspace: cassandraConfig.KEYSPACE
@@ -16,15 +16,17 @@ export const connectToCassandra = () => {
         }
     });
 };
+
 connectToCassandra();
 
 export const executeQuery = async (query) => {
     try {
         const result = await client.execute(query, [], { prepare: true });
-        //console.log('Query result:', result.rows);
+        console.log('Query result:', result.rows);
         return result.rows;
     } catch (error) {
         console.error('Error executing query:', error);
         throw error;
     }
 };
+
